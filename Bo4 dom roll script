@@ -1,0 +1,29 @@
+total = 100*100*100*100
+crits = 0
+critfails = 0
+
+
+for x in range(1, 101):
+    for y in range(1, 101):
+        for z in range(1, 101):
+            for k in range(1, 101):
+                failure = False
+                crit = False
+                if x == 1 or y == 1 or z == 1 or k == 1:
+                    failure = True
+                if x > 92 or y > 92 or z > 92 or k > 92:
+                    crit = True
+                if x == 69 or y == 69 or z == 69 or k == 69:
+                    crit = True
+                if x == y or y == z or z == x or x == k or y == k or z == k:
+                    crit = True
+                if failure and crit:
+                    continue
+                elif failure:
+                    critfails += 1
+                elif crit:
+                    crits += 1
+                else:
+                    continue
+
+print(crits/total)
